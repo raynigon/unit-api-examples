@@ -62,40 +62,40 @@ internal class ApplicationTests {
         // given:
         val now = OffsetDateTime.now()
         val record0 = TelemetryRecord(
-                id = UUID.randomUUID(),
-                recorded = now.minusMinutes(10),
-                rtt = getQuantity(236958, SECOND.prefix(MetricPrefix.MILLI)),
-                fuel = FuelStats(getQuantity(61.0, KILOGRAM), getQuantity(212.0, KILOGRAM)),
-                sensors = SensorStats(
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        0.0,
-                        0.0
-                ),
-                energy = EnergyStats(getQuantity(15.432 / 3600.0, COULOMB), getQuantity(489.2, WATT)),
-                computer = ComputerStats(5000000, 17401750, 1472618)
+            id = UUID.randomUUID(),
+            recorded = now.minusMinutes(10),
+            rtt = getQuantity(236958, SECOND.prefix(MetricPrefix.MILLI)),
+            fuel = FuelStats(getQuantity(61.0, KILOGRAM), getQuantity(212.0, KILOGRAM)),
+            sensors = SensorStats(
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                0.0,
+                0.0
+            ),
+            energy = EnergyStats(getQuantity(15.432 / 3600.0, COULOMB), getQuantity(489.2, WATT)),
+            computer = ComputerStats(5000000, 17401750, 1472618)
         )
         val record1 = TelemetryRecord(
-                id = UUID.randomUUID(),
-                recorded = now.minusMinutes(5),
-                rtt = getQuantity(236962, SECOND.prefix(MetricPrefix.MILLI)),
-                fuel = FuelStats(getQuantity(61.0, KILOGRAM), getQuantity(212.0, KILOGRAM)),
-                sensors = SensorStats(
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        getQuantity(0.0, METRE_PER_SQUARE_SECOND),
-                        0.0,
-                        0.0
-                ),
-                energy = EnergyStats(getQuantity(15.432 / 3600.0, COULOMB), getQuantity(489.2, WATT)),
-                computer = ComputerStats(5000000, 17401750, 1472618)
+            id = UUID.randomUUID(),
+            recorded = now.minusMinutes(5),
+            rtt = getQuantity(236962, SECOND.prefix(MetricPrefix.MILLI)),
+            fuel = FuelStats(getQuantity(61.0, KILOGRAM), getQuantity(212.0, KILOGRAM)),
+            sensors = SensorStats(
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                getQuantity(0.0, METRE_PER_SQUARE_SECOND),
+                0.0,
+                0.0
+            ),
+            energy = EnergyStats(getQuantity(15.432 / 3600.0, COULOMB), getQuantity(489.2, WATT)),
+            computer = ComputerStats(5000000, 17401750, 1472618)
         )
         repository.saveAll(listOf(record0, record1))
 
