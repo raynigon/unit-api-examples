@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URI
 
 plugins {
     id("org.springframework.boot") version "2.3.3.RELEASE"
@@ -15,6 +16,7 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
+    maven { url = URI.create("https://jitpack.io") }
 }
 
 dependencies {
@@ -24,6 +26,11 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.github.raynigon.unit-api:jackson-starter:a4f550075d")
+    implementation("com.github.raynigon.unit-api:jpa-starter:a4f550075d")
+    implementation("com.github.raynigon.unit-api:unit-api-kotlin:a4f550075d")
+    // Future implementation("com.github.raynigon.unit-api:springdoc-starter:master-SNAPSHOT")
+
     runtimeOnly("org.postgresql:postgresql")
 
     implementation("org.testcontainers:postgresql") // We dont want to setup a real DB here

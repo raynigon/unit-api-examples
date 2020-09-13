@@ -7,10 +7,19 @@ import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
 import com.raynigon.mco.groundstation.utils.MCO_COMPUTER_MEMORY_BYTES_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_BATTERY_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_SOLAR_MAX
+import com.raynigon.unit_api.kotlin.div
+import com.raynigon.unit_api.kotlin.minus
+import com.raynigon.unit_api.kotlin.times
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
+import tech.units.indriya.quantity.Quantities
+import tech.units.indriya.unit.Units
+import javax.measure.Quantity
+import javax.measure.quantity.Dimensionless
+import javax.measure.quantity.Length
+import javax.measure.quantity.Speed
 
-const val LIGHTSPEED = 299792458.0
+val LIGHTSPEED = Quantities.getQuantity(299792458, Units.METRE_PER_SECOND)
 
 interface TelemetryService {
 
@@ -41,9 +50,9 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
             speed = speed,
             acceleration = acceleration,
             batteryPower = latest.energy.battery,
-            batteryPowerPercent = latest.energy.battery / MCO_ENERGY_BATTERY_MAX,
+            batteryPowerPercent = (latest.energy.battery / MCO_ENERGY_BATTERY_MAX) as Quantity<Dimensionless>,
             solarPower = latest.energy.solar,
-            solarPowerPercent = latest.energy.solar / MCO_ENERGY_SOLAR_MAX,
+            solarPowerPercent = (latest.energy.solar / MCO_ENERGY_SOLAR_MAX) as Quantity<Dimensionless>,
             freeMemory = latest.computer.freeMemory,
             freeMemoryPercent = latest.computer.freeMemory.toDouble() / MCO_COMPUTER_MEMORY_BYTES_MAX.toDouble()
         )
@@ -57,16 +66,18 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
         )
     }
 
-    private fun calculateSpeed(first: TelemetryRecord, second: TelemetryRecord): Double {
+    private fun calculateSpeed(first: TelemetryRecord, second: TelemetryRecord): Quantity<Speed> {
         val distance0 = calculateDistance(first)
         val distance1 = calculateDistance(second)
+        val timestamp0 = Quantities.getQuantity(first.recorded.toInstant().toEpochMilli() / 1000.0, Units.SECOND)
+        val timestamp1 = Quantities.getQuantity(second.recorded.toInstant().toEpochMilli() / 1000.0, Units.SECOND)
+
         val deltaS = distance1 - distance0
-        val deltaT = (second.recorded.toInstant().toEpochMilli() - first.recorded.toInstant().toEpochMilli()) / 1000.0 / 3600.0
-        return deltaS / deltaT
+        val deltaT = timestamp1 - timestamp0
+        return (deltaS / deltaT) as Quantity<Speed>
     }
 
-    private fun calculateDistance(record: TelemetryRecord): Double {
-        val singleTripDuration = (record.rtt / 2.0) / 1000.0
-        return (LIGHTSPEED * singleTripDuration) / 1000.0
+    private fun calculateDistance(record: TelemetryRecord): Quantity<Length> {
+        return (LIGHTSPEED * record.rtt / 2.0) as Quantity<Length>
     }
 }

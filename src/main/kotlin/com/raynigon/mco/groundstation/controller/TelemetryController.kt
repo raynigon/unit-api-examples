@@ -70,7 +70,7 @@ class TelemetryController(
                 solar = record.energy.solar
             ),
             computer = ComputerStats(
-                clockSpeed = record.computer.clockSpeed,
+                clockSpeed = record.computer.clockSpeed.value.toLong(),
                 freeMemory = record.computer.memory.free,
                 usedMemory = record.computer.memory.used
             )
