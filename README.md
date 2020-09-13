@@ -57,6 +57,7 @@ Each Transmission will be given as a JSON Document. Example:
     "solar": 489.2
   },
   "computer": {
+    "clockSpeed": 5000000,
     "memory": {
       "free": 17401750,
       "used": 1472618
