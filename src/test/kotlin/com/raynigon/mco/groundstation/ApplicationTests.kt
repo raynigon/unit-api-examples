@@ -1,7 +1,10 @@
 package com.raynigon.mco.groundstation
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,6 +21,14 @@ internal class ApplicationTests {
     @Autowired
     lateinit var objectMapper: ObjectMapper
 
+    @Autowired
+    lateinit var repository: TelemetryRecordRepository
+
+    @BeforeEach
+    fun setup() {
+        repository.deleteAll()
+    }
+
     @Test
     fun contextLoads() {
     }
@@ -28,6 +39,6 @@ internal class ApplicationTests {
         val request = objectMapper.readValue(json, HashMap::class.java)
         val response = restTemplate.postForEntity(URI.create("/api/telemetry/"), request, HashMap::class.java)
         assertTrue(response.statusCode.is2xxSuccessful)
+        assertEquals(1, repository.count())
     }
-
 }
