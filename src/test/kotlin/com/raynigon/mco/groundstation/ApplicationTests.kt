@@ -1,6 +1,11 @@
 package com.raynigon.mco.groundstation
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.raynigon.mco.groundstation.model.ComputerStats
+import com.raynigon.mco.groundstation.model.EnergyStats
+import com.raynigon.mco.groundstation.model.FuelStats
+import com.raynigon.mco.groundstation.model.SensorStats
+import com.raynigon.mco.groundstation.model.TelemetryRecord
 import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -11,6 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 import org.springframework.boot.test.web.client.TestRestTemplate
 import java.net.URI
+import java.time.OffsetDateTime
+import java.util.UUID
+import kotlin.collections.HashMap
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 internal class ApplicationTests {
@@ -40,5 +48,46 @@ internal class ApplicationTests {
         val response = restTemplate.postForEntity(URI.create("/api/telemetry/"), request, HashMap::class.java)
         assertTrue(response.statusCode.is2xxSuccessful)
         assertEquals(1, repository.count())
+    }
+
+    @Test
+    fun getStatus() {
+        // given:
+        val now = OffsetDateTime.now()
+        val record0 = TelemetryRecord(
+            id = UUID.randomUUID(),
+            recorded = now.minusMinutes(10),
+            rtt = 236958,
+            fuel = FuelStats(61.0, 212.0),
+            sensors = SensorStats(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+            energy = EnergyStats(15.432, 489.2),
+            computer = ComputerStats(5000000, 17401750, 1472618)
+        )
+        val record1 = TelemetryRecord(
+            id = UUID.randomUUID(),
+            recorded = now.minusMinutes(5),
+            rtt = 236962,
+            fuel = FuelStats(61.0, 212.0),
+            sensors = SensorStats(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+            energy = EnergyStats(15.432, 489.2),
+            computer = ComputerStats(5000000, 17401750, 1472618)
+        )
+        repository.saveAll(listOf(record0, record1))
+
+        // when:
+        val response = restTemplate.getForObject(URI.create("/api/telemetry/"), HashMap::class.java)
+
+        // then:
+        assertTrue(3.55E7 < (response["distance"] as Double))
+        assertTrue(3.56E7 > (response["distance"] as Double))
+
+        assertTrue(7195 < (response["speed"] as Double))
+        assertTrue(7196 > (response["speed"] as Double))
+
+        assertTrue(0.95 < (response["batteryPowerPercent"] as Double))
+        assertTrue(1.00 > (response["batteryPowerPercent"] as Double))
+
+        assertTrue(0.48 < (response["solarPowerPercent"] as Double))
+        assertTrue(0.50 > (response["solarPowerPercent"] as Double))
     }
 }

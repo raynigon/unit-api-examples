@@ -3,10 +3,12 @@ package com.raynigon.mco.groundstation.controller
 import com.raynigon.mco.groundstation.model.ComputerStats
 import com.raynigon.mco.groundstation.model.EnergyStats
 import com.raynigon.mco.groundstation.model.FuelStats
+import com.raynigon.mco.groundstation.model.SatelliteStatus
 import com.raynigon.mco.groundstation.model.SensorStats
 import com.raynigon.mco.groundstation.model.TelemetryRecord
 import com.raynigon.mco.groundstation.service.TelemetryService
 import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,6 +25,25 @@ class TelemetryController(
     @PostMapping(consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun record(@RequestBody record: TelemetryRecordRequest) {
         service.record(mapToDomain(record))
+    }
+
+    @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun status(): SatelliteStatusResponse {
+        return mapToResponse(service.calculateStatus())
+    }
+
+    private fun mapToResponse(status: SatelliteStatus): SatelliteStatusResponse {
+        return SatelliteStatusResponse(
+            distance = status.distance,
+            speed = status.speed,
+            acceleration = status.acceleration,
+            batteryPower = status.batteryPower,
+            batteryPowerPercent = status.batteryPowerPercent,
+            solarPower = status.solarPower,
+            solarPowerPercent = status.solarPowerPercent,
+            freeMemory = status.freeMemory,
+            freeMemoryPercent = status.freeMemoryPercent
+        )
     }
 
     private fun mapToDomain(record: TelemetryRecordRequest): TelemetryRecord {
