@@ -1,5 +1,6 @@
 package com.raynigon.mco.groundstation.model
 
+import com.raynigon.unit_api.core.units.si.acceleration.MetrePerSquaredSecond
 import com.raynigon.unit_api.jpa.annotation.JpaUnit
 import javax.measure.Quantity
 import javax.measure.quantity.Acceleration
@@ -22,12 +23,12 @@ data class SatelliteStatus(
 )
 
 data class Acceleration3D(
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     val x: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     val y: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     val z: Quantity<Acceleration>
 )

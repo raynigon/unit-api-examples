@@ -1,5 +1,10 @@
 package com.raynigon.mco.groundstation.model
 
+import com.raynigon.mco.groundstation.controller.AmpereHour
+import com.raynigon.unit_api.core.units.si.acceleration.MetrePerSquaredSecond
+import com.raynigon.unit_api.core.units.si.mass.Kilogram
+import com.raynigon.unit_api.core.units.si.power.Watt
+import com.raynigon.unit_api.core.units.si.time.MilliSecond
 import com.raynigon.unit_api.jpa.annotation.JpaUnit
 import com.raynigon.unit_api.jpa.type.QuantityType
 import org.hibernate.annotations.TypeDef
@@ -33,7 +38,7 @@ data class TelemetryRecord(
     @Column(name = "recorded")
     val recorded: OffsetDateTime,
 
-    @JpaUnit("ms")
+    @JpaUnit(MilliSecond::class)
     @Column(name = "rtt")
     val rtt: Quantity<Time>,
 
@@ -52,38 +57,38 @@ data class TelemetryRecord(
 
 @Embeddable
 data class FuelStats(
-    @JpaUnit("kg")
+    @JpaUnit(Kilogram::class)
     @Column(name = "fuel_nto")
     val nto: Quantity<Mass>,
 
-    @JpaUnit("kg")
+    @JpaUnit(Kilogram::class)
     @Column(name = "fuel_hydrazine")
     val hydrazine: Quantity<Mass>
 )
 
 @Embeddable
 data class SensorStats(
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope0_x")
     val gyroscope0X: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope0_y")
     val gyroscope0Y: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope0_z")
     val gyroscope0Z: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope1_x")
     val gyroscope1X: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope1_y")
     val gyroscope1Y: Quantity<Acceleration>,
 
-    @JpaUnit("m/s²")
+    @JpaUnit(MetrePerSquaredSecond::class)
     @Column(name = "sensors_gyroscope1_z")
     val gyroscope1Z: Quantity<Acceleration>,
 
@@ -96,11 +101,11 @@ data class SensorStats(
 
 @Embeddable
 data class EnergyStats(
-    @JpaUnit("Ah")
+    @JpaUnit(AmpereHour::class)
     @Column(name = "energy_battery")
     val battery: Quantity<ElectricCharge>,
 
-    @JpaUnit("W")
+    @JpaUnit(Watt::class)
     @Column(name = "energy_solar")
     val solar: Quantity<Power>
 )

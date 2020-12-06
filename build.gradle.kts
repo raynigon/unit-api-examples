@@ -26,10 +26,16 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.github.raynigon.unit-api:jackson-starter:a4f550075d")
-    implementation("com.github.raynigon.unit-api:jpa-starter:a4f550075d")
-    implementation("com.github.raynigon.unit-api:unit-api-kotlin:a4f550075d")
-    // Future implementation("com.github.raynigon.unit-api:springdoc-starter:master-SNAPSHOT")
+    implementation("com.raynigon.unit-api:jackson-starter:1.1.0")
+    implementation("com.raynigon.unit-api:jpa-starter:1.1.0")
+    implementation("com.raynigon.unit-api:unit-api-kotlin:1.1.0")
+    implementation("com.raynigon.unit-api:springdoc-starter:1.1.0")
+
+    implementation("org.springdoc:springdoc-openapi-ui:1.5.0")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.5.0")
+    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.5.0")
+    implementation("io.swagger.core.v3:swagger-annotations:2.1.5")
+    implementation("org.webjars:swagger-ui:3.37.2")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -42,7 +48,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.14.3")
+        mavenBom("org.testcontainers:testcontainers-bom:1.15.0")
     }
 }
 

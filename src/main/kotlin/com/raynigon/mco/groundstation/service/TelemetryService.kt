@@ -7,19 +7,19 @@ import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
 import com.raynigon.mco.groundstation.utils.MCO_COMPUTER_MEMORY_BYTES_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_BATTERY_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_SOLAR_MAX
+import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.MetrePerSecond
+import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Second
 import com.raynigon.unit_api.kotlin.div
 import com.raynigon.unit_api.kotlin.minus
 import com.raynigon.unit_api.kotlin.times
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
-import tech.units.indriya.quantity.Quantities
-import tech.units.indriya.unit.Units
 import javax.measure.Quantity
 import javax.measure.quantity.Dimensionless
 import javax.measure.quantity.Length
 import javax.measure.quantity.Speed
 
-val LIGHTSPEED = Quantities.getQuantity(299792458, Units.METRE_PER_SECOND)
+val LIGHTSPEED: Quantity<Speed> = MetrePerSecond(299792458)
 
 interface TelemetryService {
 
@@ -69,8 +69,8 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
     private fun calculateSpeed(first: TelemetryRecord, second: TelemetryRecord): Quantity<Speed> {
         val distance0 = calculateDistance(first)
         val distance1 = calculateDistance(second)
-        val timestamp0 = Quantities.getQuantity(first.recorded.toInstant().toEpochMilli() / 1000.0, Units.SECOND)
-        val timestamp1 = Quantities.getQuantity(second.recorded.toInstant().toEpochMilli() / 1000.0, Units.SECOND)
+        val timestamp0 = Second(first.recorded.toInstant().toEpochMilli() / 1000.0)
+        val timestamp1 = Second(second.recorded.toInstant().toEpochMilli() / 1000.0)
 
         val deltaS = distance1 - distance0
         val deltaT = timestamp1 - timestamp0

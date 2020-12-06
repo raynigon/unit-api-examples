@@ -1,5 +1,6 @@
 package com.raynigon.mco.groundstation.controller
 
+import com.raynigon.unit_api.core.units.si.time.MilliSecond
 import com.raynigon.unit_api.jackson.annotation.JsonUnit
 import javax.measure.Quantity
 import javax.measure.quantity.Acceleration
@@ -11,7 +12,7 @@ import javax.measure.quantity.Time
 
 data class TelemetryRecordRequest(
 
-    @JsonUnit("ms")
+    @JsonUnit(MilliSecond::class)
     val rtt: Quantity<Time>,
     val fuel: TelemetryFuel,
     val sensors: TelemetrySensors,
