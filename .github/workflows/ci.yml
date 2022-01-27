@@ -31,9 +31,9 @@ jobs:
           distribution: 'zulu'
           java-version: 11
       - name: Gradle Command
-        uses: eskatos/gradle-command-action@v1.3.2
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: ktlintCheck test
-          build-root-directory: ./${{ matrix.project }}
+          build-root-directory: ${{ matrix.project }}/
 
 
