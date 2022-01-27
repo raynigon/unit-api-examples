@@ -33,7 +33,7 @@ dependencies {
 
     implementation("org.springdoc:springdoc-openapi-ui:1.5.0")
     implementation("org.springdoc:springdoc-openapi-kotlin:1.5.0")
-    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.5.0")
+    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.5")
     implementation("io.swagger.core.v3:swagger-annotations:2.1.5")
     implementation("org.webjars:swagger-ui:3.37.2")
 
