@@ -1,9 +1,9 @@
 package app.example.weather.dto;
 
-import com.raynigon.unit_api.core.annotation.QuantityShape;
-import com.raynigon.unit_api.core.units.si.dimensionless.Percent;
-import com.raynigon.unit_api.core.units.si.temperature.Celsius;
-import com.raynigon.unit_api.jackson.annotation.JsonUnit;
+import com.raynigon.unit.api.core.annotation.QuantityShape;
+import com.raynigon.unit.api.core.units.si.dimensionless.Percent;
+import com.raynigon.unit.api.core.units.si.temperature.Celsius;
+import com.raynigon.unit.api.jackson.annotation.JsonUnit;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Dimensionless;

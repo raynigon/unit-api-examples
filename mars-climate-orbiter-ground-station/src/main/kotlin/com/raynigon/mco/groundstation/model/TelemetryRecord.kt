@@ -1,12 +1,12 @@
 package com.raynigon.mco.groundstation.model
 
-import com.raynigon.mco.groundstation.controller.AmpereHour
-import com.raynigon.unit_api.core.units.si.acceleration.MetrePerSquaredSecond
-import com.raynigon.unit_api.core.units.si.mass.Kilogram
-import com.raynigon.unit_api.core.units.si.power.Watt
-import com.raynigon.unit_api.core.units.si.time.MilliSecond
-import com.raynigon.unit_api.jpa.annotation.JpaUnit
-import com.raynigon.unit_api.jpa.type.QuantityType
+import com.raynigon.unit.api.core.units.si.acceleration.MetrePerSquaredSecond
+import com.raynigon.unit.api.core.units.si.electrical.charge.AmpereHour
+import com.raynigon.unit.api.core.units.si.mass.Kilogram
+import com.raynigon.unit.api.core.units.si.power.Watt
+import com.raynigon.unit.api.core.units.si.time.MilliSecond
+import com.raynigon.unit.api.jpa.annotation.JpaUnit
+import com.raynigon.unit.api.jpa.type.QuantityType
 import org.hibernate.annotations.TypeDef
 import java.time.OffsetDateTime
 import java.util.UUID

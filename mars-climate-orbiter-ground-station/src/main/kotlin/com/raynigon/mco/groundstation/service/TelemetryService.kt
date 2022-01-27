@@ -7,11 +7,11 @@ import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
 import com.raynigon.mco.groundstation.utils.MCO_COMPUTER_MEMORY_BYTES_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_BATTERY_MAX
 import com.raynigon.mco.groundstation.utils.MCO_ENERGY_SOLAR_MAX
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.MetrePerSecond
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Second
-import com.raynigon.unit_api.kotlin.div
-import com.raynigon.unit_api.kotlin.minus
-import com.raynigon.unit_api.kotlin.times
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.MetrePerSecond
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Second
+import com.raynigon.unit.api.kotlin.div
+import com.raynigon.unit.api.kotlin.minus
+import com.raynigon.unit.api.kotlin.times
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import javax.measure.Quantity

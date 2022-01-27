@@ -1,7 +1,7 @@
 package com.raynigon.mco.groundstation.model
 
-import com.raynigon.unit_api.core.units.si.acceleration.MetrePerSquaredSecond
-import com.raynigon.unit_api.jpa.annotation.JpaUnit
+import com.raynigon.unit.api.core.units.si.acceleration.MetrePerSquaredSecond
+import com.raynigon.unit.api.jpa.annotation.JpaUnit
 import javax.measure.Quantity
 import javax.measure.quantity.Acceleration
 import javax.measure.quantity.Dimensionless

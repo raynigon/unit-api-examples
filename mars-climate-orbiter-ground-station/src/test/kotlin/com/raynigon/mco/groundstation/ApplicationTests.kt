@@ -8,10 +8,10 @@ import com.raynigon.mco.groundstation.model.SensorStats
 import com.raynigon.mco.groundstation.model.TelemetryRecord
 import com.raynigon.mco.groundstation.repo.TelemetryRecordRepository
 import com.raynigon.mco.groundstation.utils.coulomb
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Kilogram
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.MetrePerSquaredSecond
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.MilliSecond
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Watt
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Kilogram
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.MetrePerSquaredSecond
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.MilliSecond
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Watt
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach

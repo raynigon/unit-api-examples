@@ -20,22 +20,23 @@ repositories {
 }
 
 dependencies {
+    implementation("com.github.raynigon.unit-api:spring-boot-jackson-starter:main-SNAPSHOT")
+    implementation("com.github.raynigon.unit-api:spring-boot-jpa-starter:main-SNAPSHOT")
+    implementation("com.github.raynigon.unit-api:unit-api-kotlin:573c18c370")
+    implementation("com.github.raynigon.unit-api:unit-api-core:573c18c370")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.raynigon.unit-api:jackson-starter:1.1.7")
-    implementation("com.raynigon.unit-api:jpa-starter:1.1.7")
-    implementation("com.raynigon.unit-api:unit-api-kotlin:1.1.7")
-    implementation("com.raynigon.unit-api:springdoc-starter:1.1.7")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.3")
+    /*implementation("org.springdoc:springdoc-openapi-ui:1.6.3")
     implementation("org.springdoc:springdoc-openapi-kotlin:1.6.3")
     implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.5")
     implementation("io.swagger.core.v3:swagger-annotations:2.1.12")
-    implementation("org.webjars:swagger-ui:4.2.1")
+    implementation("org.webjars:swagger-ui:4.2.1")*/
 
     runtimeOnly("org.postgresql:postgresql")
 

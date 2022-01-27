@@ -1,11 +1,11 @@
 package com.raynigon.mco.groundstation.utils
 
-import com.raynigon.unit_api.core.service.UnitsApiService
-import com.raynigon.unit_api.core.units.general.AlternateUnit
-import com.raynigon.unit_api.core.units.si.SISystem
-import com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Watt
-import com.raynigon.unit_api.core.units.si.electrical.current.Ampere
-import com.raynigon.unit_api.core.units.si.time.Second
+import com.raynigon.unit.api.core.service.UnitsApiService
+import com.raynigon.unit.api.core.units.general.AlternateUnit
+import com.raynigon.unit.api.core.units.si.SISystem
+import com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Watt
+import com.raynigon.unit.api.core.units.si.electrical.current.Ampere
+import com.raynigon.unit.api.core.units.si.time.Second
 import javax.measure.Quantity
 import javax.measure.Unit
 import javax.measure.quantity.ElectricCharge

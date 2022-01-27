@@ -1,7 +1,7 @@
 package com.raynigon.mco.groundstation.controller
 
-import com.raynigon.unit_api.core.units.si.time.MilliSecond
-import com.raynigon.unit_api.jackson.annotation.JsonUnit
+import com.raynigon.unit.api.core.units.si.time.MilliSecond
+import com.raynigon.unit.api.jackson.annotation.JsonUnit
 import javax.measure.Quantity
 import javax.measure.quantity.Acceleration
 import javax.measure.quantity.ElectricCharge
