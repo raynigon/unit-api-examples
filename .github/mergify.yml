@@ -8,7 +8,8 @@ pull_request_rules:
         - -conflict
         - label=dependencies
         - author=dependabot[bot]
-        - check-success=test
+        - check-success=test (weather-app)
+        - check-success=test (mars-climate-orbiter-ground-station)
     actions:
       merge:
         method: merge
