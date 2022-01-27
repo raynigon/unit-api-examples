@@ -27,7 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.raynigon.unit-api:jackson-starter:1.1.7")
-    implementation("com.raynigon.unit-api:jpa-starter:1.1.0")
+    implementation("com.raynigon.unit-api:jpa-starter:1.1.7")
     implementation("com.raynigon.unit-api:unit-api-kotlin:1.1.7")
     implementation("com.raynigon.unit-api:springdoc-starter:1.1.0")
 
