@@ -29,13 +29,13 @@ dependencies {
     implementation("com.raynigon.unit-api:jackson-starter:1.1.7")
     implementation("com.raynigon.unit-api:jpa-starter:1.1.7")
     implementation("com.raynigon.unit-api:unit-api-kotlin:1.1.7")
-    implementation("com.raynigon.unit-api:springdoc-starter:1.1.0")
+    implementation("com.raynigon.unit-api:springdoc-starter:1.1.7")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.5.0")
-    implementation("org.springdoc:springdoc-openapi-kotlin:1.5.0")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.3")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.3")
     implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.5")
     implementation("io.swagger.core.v3:swagger-annotations:2.1.12")
-    implementation("org.webjars:swagger-ui:3.37.2")
+    implementation("org.webjars:swagger-ui:4.1.3-1")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -48,7 +48,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.15.0")
+        mavenBom("org.testcontainers:testcontainers-bom:1.16.3")
     }
 }
 
