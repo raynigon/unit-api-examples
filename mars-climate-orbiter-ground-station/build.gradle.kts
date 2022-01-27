@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.4.0"
     kotlin("plugin.spring") version "1.4.0"
     kotlin("plugin.jpa") version "1.4.0"
-    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = "com.raynigon.mco"
@@ -26,7 +26,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.raynigon.unit-api:jackson-starter:1.1.0")
+    implementation("com.raynigon.unit-api:jackson-starter:1.1.7")
     implementation("com.raynigon.unit-api:jpa-starter:1.1.0")
     implementation("com.raynigon.unit-api:unit-api-kotlin:1.1.0")
     implementation("com.raynigon.unit-api:springdoc-starter:1.1.0")
