@@ -35,5 +35,13 @@ jobs:
         with:
           arguments: test check
           build-root-directory: ${{ matrix.project }}/
-
+      - uses: jwgmeligmeyling/checkstyle-github-action@master
+        with:
+          path: '**/checkstyle/main.xml'
+      - name: "Upload Logs Artifact"
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: unit-test-logs
+          path: ${{ matrix.project }}/build/reports/
 
