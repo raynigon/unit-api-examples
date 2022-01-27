@@ -1,11 +1,28 @@
 name: CI
 on:
   push:
-    branches: []
+
 jobs:
-  mcogs_test:
-    name: Test - Mars Climate Orbiter Ground Station
+  matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: |
+          files=$(find . -type f -name 'build.gradle*')
+          files=$(echo $files | sed -r 's|/[^/]+$||' | sed -r 's/.\///' | sort | uniq )
+          matrix=$(echo $files | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "::set-output name=matrix::$matrix"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{fromJson(needs.matrix.outputs.matrix)}}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Java JDK
@@ -16,19 +33,6 @@ jobs:
         uses: eskatos/gradle-command-action@v1.3.2
         with:
           arguments: ktlintCheck test
-          build-root-directory: mars-climate-orbiter-ground-station/
-  weather_app_test:
-    name: Test - Weather App
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Java JDK
-        uses: actions/setup-java@v1.4.2
-        with:
-          java-version: 11
-      - name: Gradle Command
-        uses: eskatos/gradle-command-action@v1.3.2
-        with:
-          arguments: test
-          build-root-directory: weather-app/
+          build-root-directory: ${{ matrix.project }}
+
 
