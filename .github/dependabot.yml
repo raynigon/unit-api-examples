@@ -1,0 +1,12 @@
+# Basic set up for gradle package manager
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/mars-climate-orbiter-ground-station"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
+    directory: "/weather-app"
+    schedule:
+      interval: "daily"
+
