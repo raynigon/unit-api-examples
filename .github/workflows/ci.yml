@@ -13,16 +13,14 @@ jobs:
         run: |
           files=$(find . -type f -name 'build.gradle*')
           files=$(echo $files | sed -r 's|/[^/]+$||' | sed -r 's/.\///' | sort | uniq )
-          matrix=$(echo $files | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          matrix=$(echo $files | jq -R -s -c 'split("\n") | map(select(length > 0))' | jq -R -s -c '{"project":.}')
           echo "::set-output name=matrix::$matrix"
-
   test:
     runs-on: ubuntu-latest
     needs: matrix
     strategy:
       fail-fast: false
-      matrix:
-        project: ${{fromJson(needs.matrix.outputs.matrix)}}
+      matrix: ${{fromJson(needs.matrix.outputs.matrix)}}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Java JDK
