@@ -9,24 +9,16 @@ import javax.measure.Quantity;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Temperature;
 
-public class WeatherResponse {
+public class WeatherResponseCelsius implements IWeatherResponse {
 
     @JsonUnit(value = Celsius.class, shape = QuantityShape.STRING)
-    private final Quantity<Temperature> temperature;
+    public final Quantity<Temperature> temperature;
 
     @JsonUnit(value = Percent.class, shape = QuantityShape.STRING)
-    private final Quantity<Dimensionless> humidity;
+    public final Quantity<Dimensionless> humidity;
 
-    public WeatherResponse(Quantity<Temperature> temperature, Quantity<Dimensionless> humidity) {
+    public WeatherResponseCelsius(Quantity<Temperature> temperature, Quantity<Dimensionless> humidity) {
         this.temperature = temperature;
         this.humidity = humidity;
-    }
-
-    public Quantity<Temperature> getTemperature() {
-        return temperature;
-    }
-
-    public Quantity<Dimensionless> getHumidity() {
-        return humidity;
     }
 }
