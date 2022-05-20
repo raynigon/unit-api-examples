@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.raynigon.unit-api:spring-boot-jackson-starter:2.0.0")
+    implementation("com.github.raynigon.unit-api:spring-boot-jackson-starter:2.0.1")
     implementation("com.github.raynigon.unit-api:spring-boot-jpa-starter:2.0.0")
     implementation("com.github.raynigon.unit-api:unit-api-kotlin:573c18c370")
     implementation("com.github.raynigon.unit-api:unit-api-core:573c18c370")
