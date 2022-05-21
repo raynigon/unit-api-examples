@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.github.raynigon.unit-api:spring-boot-jackson-starter:2.0.0")
+    implementation("com.github.raynigon.unit-api:spring-boot-jackson-starter:2.0.1")
     implementation("com.github.raynigon.unit-api:unit-api-core:573c18c370")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
