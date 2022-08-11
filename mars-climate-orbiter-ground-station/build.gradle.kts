@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
 plugins {
-    id("org.springframework.boot") version "2.7.1"
+    id("org.springframework.boot") version "2.7.2"
     id("io.spring.dependency-management") version "1.0.13.RELEASE"
     kotlin("jvm") version "1.7.0"
     kotlin("plugin.spring") version "1.7.0"
