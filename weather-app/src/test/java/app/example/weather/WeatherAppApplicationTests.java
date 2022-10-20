@@ -26,7 +26,7 @@ class WeatherAppApplicationTests {
     @Test
     @SuppressWarnings("unchecked")
     void get_api_weather() {
-        Map<String, Object> result = restTemplate.getForObject("http://localhost:" + port + "/api/weather", Map.class);
+        Map<String, Object> result = restTemplate.getForObject("http://localhost:" + port + "/api/v1/weather", Map.class);
         assertEquals(Map.of(
                 "temperature", "30 \u2103",
                 "humidity", "45 %"

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Celsius;
-import static com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Percent;
+import static com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Celsius;
+import static com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Percent;
 
 @RestController
 @RequestMapping("/api/v1/weather")

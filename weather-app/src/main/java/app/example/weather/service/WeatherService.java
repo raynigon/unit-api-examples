@@ -6,8 +6,8 @@ import javax.measure.Quantity;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Temperature;
 
-import static com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Celsius;
-import static com.raynigon.unit_api.core.units.si.SISystemUnitsConstants.Percent;
+import static com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Celsius;
+import static com.raynigon.unit.api.core.units.si.SISystemUnitsConstants.Percent;
 
 @Service
 public class WeatherService {
