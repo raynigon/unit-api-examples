@@ -23,7 +23,7 @@ dependencies {
     implementation("com.raynigon.unit-api:spring-boot-jackson-starter:2.0.1")
     implementation("com.raynigon.unit-api:spring-boot-jpa-starter:2.0.1")
     implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:2.0.1")
-    implementation("com.raynigon.unit-api:unit-api-kotlin:2.0.1")
+    implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.0")
     implementation("com.raynigon.unit-api:unit-api-core:2.0.1")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
