@@ -20,11 +20,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:2.0.1")
-    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:2.0.1")
-    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:2.0.1")
-    implementation("com.raynigon.unit-api:unit-api-kotlin:2.0.1")
-    implementation("com.raynigon.unit-api:unit-api-core:2.0.1")
+    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:3.0.0")
+    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:3.0.0")
+    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.0")
+    implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.0")
+    implementation("com.raynigon.unit-api:unit-api-core:3.0.0")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -33,11 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
-    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.13")
-    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.13")
-    /*implementation("io.swagger.core.v3:swagger-annotations:2.1.12")
-    implementation("org.webjars:swagger-ui:4.2.1")*/
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0")
 
     runtimeOnly("org.postgresql:postgresql")
 
