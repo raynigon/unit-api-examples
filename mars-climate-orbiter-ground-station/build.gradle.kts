@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
 plugins {
-    id("org.springframework.boot") version "2.7.6"
+    id("org.springframework.boot") version "3.0.0"
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
@@ -12,7 +12,7 @@ plugins {
 
 group = "com.raynigon.mco"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -20,11 +20,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:2.0.1")
-    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:2.0.1")
-    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:2.0.1")
-    implementation("com.raynigon.unit-api:unit-api-kotlin:2.0.1")
-    implementation("com.raynigon.unit-api:unit-api-core:2.0.1")
+    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:3.0.0")
+    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:3.0.0")
+    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.0")
+    implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.0")
+    implementation("com.raynigon.unit-api:unit-api-core:3.0.0")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -33,11 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
-    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.13")
-    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.13")
-    /*implementation("io.swagger.core.v3:swagger-annotations:2.1.12")
-    implementation("org.webjars:swagger-ui:4.2.1")*/
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -61,6 +57,6 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
