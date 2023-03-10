@@ -22,7 +22,7 @@ repositories {
 dependencies {
     implementation("com.raynigon.unit-api:spring-boot-jackson-starter:3.0.1")
     implementation("com.raynigon.unit-api:spring-boot-jpa-starter:3.0.1")
-    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.0")
+    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.1")
     implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.1")
     implementation("com.raynigon.unit-api:unit-api-core:3.0.1")
 
