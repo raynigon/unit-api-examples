@@ -35,5 +35,5 @@ data class SatelliteStatusResponse(
 
     val freeMemory: Long,
     val freeMemoryPercent: Double,
-    val acceleration: Acceleration3D,
+    val acceleration: Acceleration3D
 )
