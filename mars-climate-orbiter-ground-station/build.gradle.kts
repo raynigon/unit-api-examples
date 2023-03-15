@@ -33,7 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
 
     runtimeOnly("org.postgresql:postgresql")
 
