@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.9.10"
     kotlin("plugin.spring") version "1.9.10"
     kotlin("plugin.jpa") version "1.9.10"
-    id("org.jlleitschuh.gradle.ktlint") version "11.5.1"
+    id("org.jlleitschuh.gradle.ktlint") version "11.6.0"
 }
 
 group = "com.raynigon.mco"
