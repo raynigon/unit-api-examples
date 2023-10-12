@@ -19,7 +19,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.raynigon.unit-api:spring-boot-jackson-starter:3.0.4")
-    implementation("com.raynigon.unit-api:unit-api-core:3.0.3")
+    implementation("com.raynigon.unit-api:unit-api-core:3.0.4")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
