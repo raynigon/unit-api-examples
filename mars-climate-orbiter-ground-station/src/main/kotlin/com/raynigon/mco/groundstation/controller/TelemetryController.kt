@@ -19,11 +19,12 @@ import java.util.UUID
 @RestController
 @RequestMapping("/api/telemetry/")
 class TelemetryController(
-    private val service: TelemetryService
+    private val service: TelemetryService,
 ) {
-
     @PostMapping(consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun record(@RequestBody record: TelemetryRecordRequest) {
+    fun record(
+        @RequestBody record: TelemetryRecordRequest,
+    ) {
         service.record(mapToDomain(record))
     }
 
@@ -42,7 +43,7 @@ class TelemetryController(
             solarPower = status.solarPower,
             solarPowerPercent = status.solarPowerPercent,
             freeMemory = status.freeMemory,
-            freeMemoryPercent = status.freeMemoryPercent
+            freeMemoryPercent = status.freeMemoryPercent,
         )
     }
 
@@ -51,29 +52,33 @@ class TelemetryController(
             id = UUID.randomUUID(),
             recorded = OffsetDateTime.now(),
             rtt = record.rtt,
-            fuel = FuelStats(
-                nto = record.fuel.nto,
-                hydrazine = record.fuel.hydrazine
-            ),
-            sensors = SensorStats(
-                gyroscope0X = record.sensors.gyroscope0.x,
-                gyroscope0Y = record.sensors.gyroscope0.y,
-                gyroscope0Z = record.sensors.gyroscope0.z,
-                gyroscope1X = record.sensors.gyroscope1.x,
-                gyroscope1Y = record.sensors.gyroscope1.y,
-                gyroscope1Z = record.sensors.gyroscope1.z,
-                sunSensor0 = record.sensors.sunSensor0,
-                sunSensor1 = record.sensors.sunSensor1
-            ),
-            energy = EnergyStats(
-                battery = record.energy.battery,
-                solar = record.energy.solar
-            ),
-            computer = ComputerStats(
-                clockSpeed = record.computer.clockSpeed.value.toLong(),
-                freeMemory = record.computer.memory.free,
-                usedMemory = record.computer.memory.used
-            )
+            fuel =
+                FuelStats(
+                    nto = record.fuel.nto,
+                    hydrazine = record.fuel.hydrazine,
+                ),
+            sensors =
+                SensorStats(
+                    gyroscope0X = record.sensors.gyroscope0.x,
+                    gyroscope0Y = record.sensors.gyroscope0.y,
+                    gyroscope0Z = record.sensors.gyroscope0.z,
+                    gyroscope1X = record.sensors.gyroscope1.x,
+                    gyroscope1Y = record.sensors.gyroscope1.y,
+                    gyroscope1Z = record.sensors.gyroscope1.z,
+                    sunSensor0 = record.sensors.sunSensor0,
+                    sunSensor1 = record.sensors.sunSensor1,
+                ),
+            energy =
+                EnergyStats(
+                    battery = record.energy.battery,
+                    solar = record.energy.solar,
+                ),
+            computer =
+                ComputerStats(
+                    clockSpeed = record.computer.clockSpeed.value.toLong(),
+                    freeMemory = record.computer.memory.free,
+                    usedMemory = record.computer.memory.used,
+                ),
         )
     }
 }

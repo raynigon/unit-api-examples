@@ -27,7 +27,6 @@ import java.util.UUID
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 internal class ApplicationTests {
-
     @Autowired
     lateinit var restTemplate: TestRestTemplate
 
@@ -47,6 +46,7 @@ internal class ApplicationTests {
     }
 
     @Test
+    @Suppress("ktlint:standard:max-line-length")
     @Disabled("We need to have the units in the unit api instead of locally defined")
     fun sendRecord() {
         val json = "{\"rtt\":236958,\"fuel\":{\"nto\":61,\"hydrazine\":212},\"sensors\":{\"gyroscope0\":{\"x\":0.0002,\"y\":-0.0001,\"z\":0.0006},\"gyroscope1\":{\"x\":-0.0001,\"y\":0.0,\"z\":0.0001},\"sunSensor0\":0.8947,\"sunSensor1\":0.1293},\"energy\":{\"battery\":15.432,\"solar\":489.2},\"computer\":{\"clockSpeed\":5000000,\"memory\":{\"free\":17401750,\"used\":1472618}}}"
@@ -60,42 +60,46 @@ internal class ApplicationTests {
     fun getStatus() {
         // given:
         val now = OffsetDateTime.now()
-        val record0 = TelemetryRecord(
-            id = UUID.randomUUID(),
-            recorded = now.minusMinutes(10),
-            rtt = MilliSecond(236958),
-            fuel = FuelStats(Kilogram(61.0), Kilogram(212.0)),
-            sensors = SensorStats(
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                0.0,
-                0.0
-            ),
-            energy = EnergyStats(coulomb(15.432 / 3600.0), Watt(489.2)),
-            computer = ComputerStats(5000000, 17401750, 1472618)
-        )
-        val record1 = TelemetryRecord(
-            id = UUID.randomUUID(),
-            recorded = now.minusMinutes(5),
-            rtt = MilliSecond(236962),
-            fuel = FuelStats(Kilogram(61.0), Kilogram(212.0)),
-            sensors = SensorStats(
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                MetrePerSquaredSecond(0.0),
-                0.0,
-                0.0
-            ),
-            energy = EnergyStats(coulomb(15.432 / 3600.0), Watt(489.2)),
-            computer = ComputerStats(5000000, 17401750, 1472618)
-        )
+        val record0 =
+            TelemetryRecord(
+                id = UUID.randomUUID(),
+                recorded = now.minusMinutes(10),
+                rtt = MilliSecond(236958),
+                fuel = FuelStats(Kilogram(61.0), Kilogram(212.0)),
+                sensors =
+                    SensorStats(
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        0.0,
+                        0.0,
+                    ),
+                energy = EnergyStats(coulomb(15.432 / 3600.0), Watt(489.2)),
+                computer = ComputerStats(5000000, 17401750, 1472618),
+            )
+        val record1 =
+            TelemetryRecord(
+                id = UUID.randomUUID(),
+                recorded = now.minusMinutes(5),
+                rtt = MilliSecond(236962),
+                fuel = FuelStats(Kilogram(61.0), Kilogram(212.0)),
+                sensors =
+                    SensorStats(
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        MetrePerSquaredSecond(0.0),
+                        0.0,
+                        0.0,
+                    ),
+                energy = EnergyStats(coulomb(15.432 / 3600.0), Watt(489.2)),
+                computer = ComputerStats(5000000, 17401750, 1472618),
+            )
         repository.saveAll(listOf(record0, record1))
 
         // when:

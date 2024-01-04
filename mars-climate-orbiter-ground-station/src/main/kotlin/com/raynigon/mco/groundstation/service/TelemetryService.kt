@@ -22,7 +22,6 @@ import javax.measure.quantity.Speed
 val LIGHTSPEED: Quantity<Speed> = MetrePerSecond(299792458)
 
 interface TelemetryService {
-
     fun record(record: TelemetryRecord)
 
     fun calculateStatus(): SatelliteStatus
@@ -30,11 +29,11 @@ interface TelemetryService {
 
 @Service
 class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : TelemetryService {
-
     override fun record(record: TelemetryRecord) {
         repository.save(record)
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun calculateStatus(): SatelliteStatus {
         if (repository.count() < 2) throw RuntimeException("Unable to calculate Status without records")
         val records = repository.findAll(Sort.by("recorded").descending())
@@ -54,7 +53,7 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
             solarPower = latest.energy.solar,
             solarPowerPercent = (latest.energy.solar / MCO_ENERGY_SOLAR_MAX) as Quantity<Dimensionless>,
             freeMemory = latest.computer.freeMemory,
-            freeMemoryPercent = latest.computer.freeMemory.toDouble() / MCO_COMPUTER_MEMORY_BYTES_MAX.toDouble()
+            freeMemoryPercent = latest.computer.freeMemory.toDouble() / MCO_COMPUTER_MEMORY_BYTES_MAX.toDouble(),
         )
     }
 
@@ -62,11 +61,15 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
         return Acceleration3D(
             x = record.sensors.gyroscope0X,
             y = record.sensors.gyroscope0Y,
-            z = record.sensors.gyroscope0Z
+            z = record.sensors.gyroscope0Z,
         )
     }
 
-    private fun calculateSpeed(first: TelemetryRecord, second: TelemetryRecord): Quantity<Speed> {
+    @Suppress("UNCHECKED_CAST")
+    private fun calculateSpeed(
+        first: TelemetryRecord,
+        second: TelemetryRecord,
+    ): Quantity<Speed> {
         val distance0 = calculateDistance(first)
         val distance1 = calculateDistance(second)
         val timestamp0 = Second(first.recorded.toInstant().toEpochMilli() / 1000.0)
@@ -77,6 +80,7 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
         return (deltaS / deltaT) as Quantity<Speed>
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun calculateDistance(record: TelemetryRecord): Quantity<Length> {
         return (LIGHTSPEED * record.rtt / 2.0) as Quantity<Length>
     }

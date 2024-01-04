@@ -17,23 +17,17 @@ import javax.measure.quantity.Speed
 data class SatelliteStatusResponse(
     @JsonUnit(Kilometre::class)
     val distance: Quantity<Length>,
-
     @JsonUnit(KilometrePerHour::class)
     val speed: Quantity<Speed>,
-
     @JsonUnit(AmpereHour::class)
     val batteryPower: Quantity<ElectricCharge>,
-
     @JsonUnit(Percent::class)
     val batteryPowerPercent: Quantity<Dimensionless>,
-
     @JsonUnit(Watt::class)
     val solarPower: Quantity<Power>,
-
     @JsonUnit(Percent::class)
     val solarPowerPercent: Quantity<Dimensionless>,
-
     val freeMemory: Long,
     val freeMemoryPercent: Double,
-    val acceleration: Acceleration3D
+    val acceleration: Acceleration3D,
 )

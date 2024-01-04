@@ -19,16 +19,14 @@ data class SatelliteStatus(
     val solarPower: Quantity<Power>,
     val solarPowerPercent: Quantity<Dimensionless>,
     val freeMemory: Long,
-    val freeMemoryPercent: Double
+    val freeMemoryPercent: Double,
 )
 
 data class Acceleration3D(
     @JpaUnit(MetrePerSquaredSecond::class)
     val x: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     val y: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
-    val z: Quantity<Acceleration>
+    val z: Quantity<Acceleration>,
 )

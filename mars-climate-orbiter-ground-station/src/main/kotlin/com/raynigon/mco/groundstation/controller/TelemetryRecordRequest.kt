@@ -11,44 +11,43 @@ import javax.measure.quantity.Power
 import javax.measure.quantity.Time
 
 data class TelemetryRecordRequest(
-
     @JsonUnit(MilliSecond::class)
     val rtt: Quantity<Time>,
     val fuel: TelemetryFuel,
     val sensors: TelemetrySensors,
     val energy: TelemetryEnergy,
-    val computer: TelemetryComputer
+    val computer: TelemetryComputer,
 )
 
 data class TelemetryFuel(
     val nto: Quantity<Mass>,
-    val hydrazine: Quantity<Mass>
+    val hydrazine: Quantity<Mass>,
 )
 
 data class TelemetrySensors(
     val gyroscope0: TelemetryAcceleration,
     val gyroscope1: TelemetryAcceleration,
     val sunSensor0: Double,
-    val sunSensor1: Double
+    val sunSensor1: Double,
 )
 
 data class TelemetryAcceleration(
     val x: Quantity<Acceleration>,
     val y: Quantity<Acceleration>,
-    val z: Quantity<Acceleration>
+    val z: Quantity<Acceleration>,
 )
 
 data class TelemetryEnergy(
     val battery: Quantity<ElectricCharge>,
-    val solar: Quantity<Power>
+    val solar: Quantity<Power>,
 )
 
 data class TelemetryComputer(
     val clockSpeed: Quantity<Frequency>,
-    val memory: TelemetryMemory
+    val memory: TelemetryMemory,
 )
 
 data class TelemetryMemory(
     val free: Long,
-    val used: Long
+    val used: Long,
 )

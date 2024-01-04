@@ -29,26 +29,20 @@ data class TelemetryRecord(
     @Id
     @Column(name = "id")
     val id: UUID,
-
     @Column(name = "recorded")
     val recorded: OffsetDateTime,
-
     @JpaUnit(MilliSecond::class)
     @Type(QuantityType::class)
     @Column(name = "rtt")
     val rtt: Quantity<Time>,
-
     @Embedded
     val fuel: FuelStats,
-
     @Embedded
     val sensors: SensorStats,
-
     @Embedded
     val energy: EnergyStats,
-
     @Embedded
-    val computer: ComputerStats
+    val computer: ComputerStats,
 )
 
 @Embeddable
@@ -57,11 +51,10 @@ data class FuelStats(
     @Type(QuantityType::class)
     @Column(name = "fuel_nto")
     val nto: Quantity<Mass>,
-
     @JpaUnit(Kilogram::class)
     @Type(QuantityType::class)
     @Column(name = "fuel_hydrazine")
-    val hydrazine: Quantity<Mass>
+    val hydrazine: Quantity<Mass>,
 )
 
 @Embeddable
@@ -70,37 +63,30 @@ data class SensorStats(
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope0_x")
     val gyroscope0X: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope0_y")
     val gyroscope0Y: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope0_z")
     val gyroscope0Z: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope1_x")
     val gyroscope1X: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope1_y")
     val gyroscope1Y: Quantity<Acceleration>,
-
     @JpaUnit(MetrePerSquaredSecond::class)
     @Type(QuantityType::class)
     @Column(name = "sensors_gyroscope1_z")
     val gyroscope1Z: Quantity<Acceleration>,
-
     @Column(name = "sensors_sun_sensor_0")
     val sunSensor0: Double,
-
     @Column(name = "sensors_sun_sensor_1")
-    val sunSensor1: Double
+    val sunSensor1: Double,
 )
 
 @Embeddable
@@ -109,21 +95,18 @@ data class EnergyStats(
     @Type(QuantityType::class)
     @Column(name = "energy_battery")
     val battery: Quantity<ElectricCharge>,
-
     @JpaUnit(Watt::class)
     @Type(QuantityType::class)
     @Column(name = "energy_solar")
-    val solar: Quantity<Power>
+    val solar: Quantity<Power>,
 )
 
 @Embeddable
 data class ComputerStats(
     @Column(name = "computer_clock_speed")
     val clockSpeed: Long,
-
     @Column(name = "computer_memory_free")
     val freeMemory: Long,
-
     @Column(name = "computer_memory_used")
-    val usedMemory: Long
+    val usedMemory: Long,
 )
