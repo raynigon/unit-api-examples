@@ -24,7 +24,7 @@ dependencies {
     implementation("com.raynigon.unit-api:spring-boot-jpa-starter:3.0.7")
     implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.7")
     implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.7")
-    implementation("com.raynigon.unit-api:unit-api-core:3.0.7")
+    implementation("com.raynigon.unit-api:unit-api-core:3.0.8")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
