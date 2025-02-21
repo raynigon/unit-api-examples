@@ -34,8 +34,7 @@ jobs:
         uses: "gradle/actions/setup-gradle@v4"
       - name: "Gradle Command - Test & Check"
         run: "./gradlew check"
-        with:
-          path: "${{ matrix.project }}/"
+        working-directory: "${{ matrix.project }}/"
       - uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
           path: '**/checkstyle/main.xml'
