@@ -8,7 +8,9 @@ plugins {
     kotlin("jvm") version "2.1.10"
     kotlin("plugin.spring") version "2.1.10"
     kotlin("plugin.jpa") version "2.1.10"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
+
+    // Linter
+    id("com.diffplug.spotless") version "7.0.2"
 }
 
 group = "com.raynigon.mco"
@@ -60,5 +62,30 @@ tasks.withType<KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
         jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
+//
+// Linting
+//
+
+spotless {
+    kotlin {
+        ktlint("1.4.1")
+    }
+    kotlinGradle {
+        ktlint("1.4.1")
+    }
+
+    sql {
+        target("src/main/resources/db/migration/*.sql")
+
+        dbeaver()
+    }
+
+    yaml {
+        target("**/*.yaml", "**/*.yml")
+
+        jackson()
     }
 }

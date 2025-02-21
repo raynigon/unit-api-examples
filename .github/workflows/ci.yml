@@ -30,11 +30,12 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 17
-      - name: Gradle Command
-        uses: gradle/gradle-build-action@v3
+      - name: "Setup gradle"
+        uses: "gradle/actions/setup-gradle@v4"
+      - name: "Gradle Command - Test & Check"
+        run: "./gradlew check"
         with:
-          arguments: test check
-          build-root-directory: ${{ matrix.project }}/
+          path: "${{ matrix.project }}/"
       - uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
           path: '**/checkstyle/main.xml'
