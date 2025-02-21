@@ -28,7 +28,9 @@ interface TelemetryService {
 }
 
 @Service
-class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : TelemetryService {
+class TelemetryServiceImpl(
+    private val repository: TelemetryRecordRepository,
+) : TelemetryService {
     override fun record(record: TelemetryRecord) {
         repository.save(record)
     }
@@ -57,13 +59,12 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
         )
     }
 
-    private fun calculateAcceleration(record: TelemetryRecord): Acceleration3D {
-        return Acceleration3D(
+    private fun calculateAcceleration(record: TelemetryRecord): Acceleration3D =
+        Acceleration3D(
             x = record.sensors.gyroscope0X,
             y = record.sensors.gyroscope0Y,
             z = record.sensors.gyroscope0Z,
         )
-    }
 
     @Suppress("UNCHECKED_CAST")
     private fun calculateSpeed(
@@ -81,7 +82,5 @@ class TelemetryServiceImpl(private val repository: TelemetryRecordRepository) : 
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun calculateDistance(record: TelemetryRecord): Quantity<Length> {
-        return (LIGHTSPEED * record.rtt / 2.0) as Quantity<Length>
-    }
+    private fun calculateDistance(record: TelemetryRecord): Quantity<Length> = (LIGHTSPEED * record.rtt / 2.0) as Quantity<Length>
 }

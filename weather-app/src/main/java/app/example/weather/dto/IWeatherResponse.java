@@ -1,4 +1,3 @@
 package app.example.weather.dto;
 
-public interface IWeatherResponse {
-}
+public interface IWeatherResponse {}

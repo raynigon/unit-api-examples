@@ -13,17 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v2/weather")
 public class WeatherControllerV2 {
 
-    private WeatherService weatherService;
+  private WeatherService weatherService;
 
-    public WeatherControllerV2(WeatherService weatherService) {
-        this.weatherService = weatherService;
-    }
+  public WeatherControllerV2(WeatherService weatherService) {
+    this.weatherService = weatherService;
+  }
 
-    @GetMapping
-    public IWeatherResponse getWeather(@RequestParam String unit) {
-        if (unit.equalsIgnoreCase("K")) {
-            return new WeatherResponseKelvin(weatherService.getTemperature(), weatherService.getHumidity());
-        }
-        return new WeatherResponseCelsius(weatherService.getTemperature(), weatherService.getHumidity());
+  @GetMapping
+  public IWeatherResponse getWeather(@RequestParam String unit) {
+    if (unit.equalsIgnoreCase("K")) {
+      return new WeatherResponseKelvin(
+          weatherService.getTemperature(), weatherService.getHumidity());
     }
+    return new WeatherResponseCelsius(
+        weatherService.getTemperature(), weatherService.getHumidity());
+  }
 }

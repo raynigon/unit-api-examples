@@ -13,17 +13,16 @@ import javax.measure.quantity.Power
 
 // TODO use Coulomb from Unit Api
 @Suppress("UNCHECKED_CAST")
-class Coulomb : AlternateUnit<ElectricCharge>(
-    SISystem.ID,
-    "C",
-    "Coulomb",
-    Second().multiply(Ampere()) as Unit<ElectricCharge>,
-    ElectricCharge::class.java,
-)
+class Coulomb :
+    AlternateUnit<ElectricCharge>(
+        SISystem.ID,
+        "C",
+        "Coulomb",
+        Second().multiply(Ampere()) as Unit<ElectricCharge>,
+        ElectricCharge::class.java,
+    )
 
-fun coulomb(value: Number): Quantity<ElectricCharge> {
-    return UnitsApiService.quantity(value, Coulomb())
-}
+fun coulomb(value: Number): Quantity<ElectricCharge> = UnitsApiService.quantity(value, Coulomb())
 
 const val MCO_FUEL_NTO_MAX = 61
 const val MCO_FUEL_HYDRAZINE_MAX = 230

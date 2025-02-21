@@ -29,12 +29,10 @@ class TelemetryController(
     }
 
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun status(): SatelliteStatusResponse {
-        return mapToResponse(service.calculateStatus())
-    }
+    fun status(): SatelliteStatusResponse = mapToResponse(service.calculateStatus())
 
-    private fun mapToResponse(status: SatelliteStatus): SatelliteStatusResponse {
-        return SatelliteStatusResponse(
+    private fun mapToResponse(status: SatelliteStatus): SatelliteStatusResponse =
+        SatelliteStatusResponse(
             distance = status.distance,
             speed = status.speed,
             acceleration = status.acceleration,
@@ -45,10 +43,9 @@ class TelemetryController(
             freeMemory = status.freeMemory,
             freeMemoryPercent = status.freeMemoryPercent,
         )
-    }
 
-    private fun mapToDomain(record: TelemetryRecordRequest): TelemetryRecord {
-        return TelemetryRecord(
+    private fun mapToDomain(record: TelemetryRecordRequest): TelemetryRecord =
+        TelemetryRecord(
             id = UUID.randomUUID(),
             recorded = OffsetDateTime.now(),
             rtt = record.rtt,
@@ -75,10 +72,11 @@ class TelemetryController(
                 ),
             computer =
                 ComputerStats(
-                    clockSpeed = record.computer.clockSpeed.value.toLong(),
+                    clockSpeed =
+                        record.computer.clockSpeed.value
+                            .toLong(),
                     freeMemory = record.computer.memory.free,
                     usedMemory = record.computer.memory.used,
                 ),
         )
-    }
 }
