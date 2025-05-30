@@ -50,7 +50,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.21.0")
+        mavenBom("org.testcontainers:testcontainers-bom:1.21.1")
     }
 }
 
