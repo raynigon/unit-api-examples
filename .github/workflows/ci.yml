@@ -31,7 +31,7 @@ jobs:
           distribution: 'adopt'
           java-version: 21
       - name: "Setup gradle"
-        uses: "gradle/actions/setup-gradle@v4"
+        uses: "gradle/actions/setup-gradle@v5"
       - name: "Gradle Command - Test & Check"
         run: "./gradlew check"
         working-directory: "${{ matrix.project }}/"
