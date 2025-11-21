@@ -10,7 +10,7 @@ plugins {
     kotlin("plugin.jpa") version "2.2.21"
 
     // Linter
-    id("com.diffplug.spotless") version "8.0.0"
+    id("com.diffplug.spotless") version "8.1.0"
 }
 
 group = "com.raynigon.mco"
