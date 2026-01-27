@@ -23,11 +23,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:3.0.9")
-    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:3.0.9")
-    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:3.0.9")
-    implementation("com.raynigon.unit-api:unit-api-kotlin:3.0.9")
-    implementation("com.raynigon.unit-api:unit-api-core:3.0.9")
+    implementation("com.raynigon.unit-api:spring-boot-jackson-starter:4.0.1")
+    implementation("com.raynigon.unit-api:spring-boot-jpa-starter:4.0.1")
+    implementation("com.raynigon.unit-api:spring-boot-springdoc-starter:4.0.1")
+    implementation("com.raynigon.unit-api:unit-api-kotlin:4.0.1")
+    implementation("com.raynigon.unit-api:unit-api-core:4.0.1")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
